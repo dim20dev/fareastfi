@@ -1,0 +1,1537 @@
+<!DOCTYPE html>
+<html lang="en" data-lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Far East Vrysoules - Authentic Chinese & Sushi Cuisine</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="description" content="Far East Vrysoules offers authentic UK-style Chinese takeaway and sushi in Vrysoules, Cyprus. We deliver locally to Avgorou and Frenaros." />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    * { margin:0; padding:0; box-sizing:border-box; }
+    :root {
+      --primary:#7f0e1f;
+      --primary-dark:#660b17;
+      --primary-light:rgba(127, 14, 31, 0.1);
+      --bg:#fafafa;
+      --card:#fff;
+      --radius:12px;
+      --shadow:0 14px 35px -10px rgba(0,0,0,0.1);
+      --text:#1f1f33;
+      --accent:#ffb400;
+      --sushi-accent:#2a7f62;
+      font-family: 'Franklin Gothic Medium','Arial Narrow', Arial, sans-serif;
+    }
+    body {
+      background: var(--bg);
+      color: var(--text);
+      min-height:100vh;
+      padding-bottom:80px;
+      scroll-behavior: smooth;
+      text-rendering: optimizeLegibility;
+      -webkit-font-smoothing: antialiased;
+    }
+    a { text-decoration:none; color: inherit; }
+    .sr-only { position:absolute; width:1px; height:1px; padding:0; margin:-1px; overflow:hidden; clip:rect(0 0 0 0); white-space:nowrap; border:0; }
+    strong { font-weight: 700; }
+
+    /* Navbar */
+    .navbar {
+      position:sticky;
+      top:0;
+      background: var(--primary);
+      display:flex;
+      align-items:center;
+      height:80px;
+      width:100%;
+      z-index:1000;
+      box-shadow:0 2px 10px rgba(0,0,0,0.2);
+    }
+    .navbar-container {
+      max-width:1400px;
+      width:100%;
+      margin:0 auto;
+      padding:0 20px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:15px;
+    }
+    .logo-container {
+      display: flex;
+      gap: 12px;
+      align-items: center;
+    }
+    .logo { 
+      height:60px; 
+      width: auto;
+      object-fit:contain; 
+      transition: transform 0.3s;
+      border-radius: 8px;
+    }
+    .logo:hover { transform: scale(1.05); }
+    .nav-links {
+      list-style:none;
+      display:flex;
+      gap:15px;
+      flex:1;
+      margin-left:30px;
+    }
+    .nav-links a {
+      color: whitesmoke;
+      font-size:16px;
+      padding:10px 15px;
+      border-radius:22px;
+      font-weight:600;
+      transition: all 0.2s;
+    }
+    .nav-links a:hover,
+    .nav-links a.active { 
+      background: var(--primary-dark);
+      transform: translateY(-2px);
+    }
+    .actions {
+      display:flex;
+      gap:12px;
+      align-items:center;
+    }
+    .btn {
+      padding:10px 18px;
+      border-radius:8px;
+      font-weight:700;
+      font-size:0.9rem;
+      border:none;
+      cursor:pointer;
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      background:#fff;
+      color: var(--primary);
+      transition: all 0.2s;
+    }
+    .btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    }
+    .btn.secondary {
+      background:transparent;
+      border:1px solid rgba(255,255,255,0.7);
+      color: whitesmoke;
+    }
+    .btn.secondary:hover {
+      background:rgba(255,255,255,0.1);
+    }
+    .lang-switch { display:flex; gap:6px; }
+    .lang-switch button {
+      background:none;
+      border:1px solid rgba(255,255,255,0.5);
+      padding:6px 12px;
+      border-radius:6px;
+      cursor:pointer;
+      color: whitesmoke;
+      font-size:0.8rem;
+      font-weight:600;
+      transition: all .2s;
+    }
+    .lang-switch button:hover {
+      background:rgba(255,255,255,0.1);
+    }
+    .lang-switch button.active {
+      background:#fff;
+      color: var(--primary);
+      border-color:#fff;
+    }
+
+    /* Social icons */
+    .socials {
+      display:flex;
+      gap:10px;
+      margin-left:10px;
+    }
+    .socials a {
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      width:34px;
+      height:34px;
+      border-radius:50%;
+      background:#fff;
+      color: var(--primary);
+      font-size:14px;
+      transition: all 0.2s;
+    }
+    .socials a:hover {
+      transform: scale(1.1);
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    }
+
+    /* Sections */
+    .container { 
+      max-width:1300px; 
+      margin:0 auto; 
+      padding:1.5rem 20px 3rem;
+    }
+    section[id] {
+      scroll-margin-top: 100px;
+    }
+    .hero {
+      margin:1.5rem 0 2rem;
+      background:#fff;
+      border-radius:16px;
+      display:flex;
+      flex-wrap:wrap;
+      gap:1.5rem;
+      padding:2rem;
+      box-shadow: var(--shadow);
+    }
+    .hero img {
+      flex:1 1 350px;
+      border-radius:12px;
+      max-height:320px;
+      object-fit:cover;
+      min-height:250px;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+      width:100%;
+    }
+    .hero-content {
+      flex:2 1 400px;
+      display:flex;
+      flex-direction:column;
+      justify-content:center;
+      gap:12px;
+    }
+    .badge {
+      background: var(--accent);
+      padding:8px 16px;
+      border-radius:999px;
+      font-size:0.75rem;
+      font-weight:700;
+      display:inline-block;
+      margin-bottom:4px;
+      width: fit-content;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+    h1 { 
+      font-size:2.2rem; 
+      margin:0;
+      line-height:1.3;
+    }
+    h2 {
+      font-size:1.8rem;
+      margin-bottom:16px;
+      position:relative;
+      display:inline-block;
+    }
+    h2:after {
+      content:'';
+      position:absolute;
+      bottom:-6px;
+      left:0;
+      width:60px;
+      height:3px;
+      background:var(--primary);
+      border-radius:3px;
+    }
+    .sushi-section h2:after {
+      background:var(--sushi-accent);
+    }
+    p { 
+      margin:0; 
+      line-height:1.6;
+      font-size:1rem;
+    }
+    .hero p {
+      font-size:1.1rem;
+      max-width:700px;
+    }
+
+    /* Menu */
+    .section-header {
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      flex-wrap:wrap;
+      gap:10px;
+      margin-bottom:20px;
+    }
+    .menu-tabs {
+      display:flex;
+      gap:10px;
+      margin-bottom:20px;
+    }
+    .menu-tab {
+      padding:8px 16px;
+      border-radius:8px;
+      background:var(--primary-light);
+      color:var(--primary);
+      font-weight:600;
+      cursor:pointer;
+      transition:all 0.2s;
+    }
+    .menu-tab.active {
+      background:var(--primary);
+      color:white;
+    }
+    .menu-tab.sushi-tab {
+      color:var(--sushi-accent);
+      background:rgba(42, 127, 98, 0.1);
+    }
+    .menu-tab.sushi-tab.active {
+      background:var(--sushi-accent);
+      color:white;
+    }
+    .cards {
+      display:grid;
+      gap:1.5rem;
+      grid-template-columns: repeat(auto-fit,minmax(280px,1fr));
+    }
+    .card {
+      background:#fff;
+      border-radius:16px;
+      padding:1.5rem;
+      box-shadow: var(--shadow);
+      overflow:hidden;
+      position:relative;
+      transition: all 0.3s;
+      border:1px solid rgba(0,0,0,0.05);
+    }
+    .card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 18px 40px -10px rgba(0,0,0,0.15);
+    }
+    .card.sushi {
+      border-top:4px solid var(--sushi-accent);
+    }
+    .card.sushi .price {
+      color:var(--sushi-accent);
+    }
+    .card img {
+      width:100%;
+      border-radius:10px;
+      object-fit:cover;
+      aspect-ratio:4/3;
+      margin-bottom:14px;
+      transition: transform 0.3s;
+      border:1px solid rgba(0,0,0,0.05);
+    }
+    .card:hover img {
+      transform: scale(1.03);
+    }
+    .card-title { 
+      font-weight:700; 
+      margin-bottom:8px;
+      font-size:1.2rem;
+    }
+    .card-desc { 
+      font-size:0.95rem; 
+      color:#555; 
+      margin-bottom:12px;
+      line-height:1.5;
+    }
+    .price { 
+      font-weight:700;
+      color: var(--primary);
+      font-size:1.2rem;
+    }
+    .show-more {
+      text-align:center;
+      margin:2rem 0;
+    }
+    .show-more-btn {
+      padding:12px 24px;
+      background:var(--primary);
+      color:white;
+      border:none;
+      border-radius:8px;
+      font-weight:600;
+      cursor:pointer;
+      transition:all 0.2s;
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+    }
+    .show-more-btn:hover {
+      background:var(--primary-dark);
+      transform:translateY(-2px);
+      box-shadow:0 4px 12px rgba(0,0,0,0.1);
+    }
+    .show-more-btn i {
+      transition:transform 0.3s;
+    }
+    .show-more-btn.active i {
+      transform:rotate(180deg);
+    }
+
+    /* Other content */
+    .about, .contact, .location {
+      background:#fff;
+      padding:2rem;
+      border-radius:16px;
+      box-shadow: var(--shadow);
+      margin:2rem 0;
+      border:1px solid rgba(0,0,0,0.05);
+    }
+    .field { margin-bottom:20px; }
+    .field label { 
+      display:block; 
+      font-weight:600; 
+      margin-bottom:8px;
+      font-size:0.95rem;
+    }
+    .field input, .field textarea {
+      width:100%;
+      padding:14px;
+      border:1px solid #ddd;
+      border-radius:8px;
+      font-size:1rem;
+      resize:vertical;
+      transition: all 0.2s;
+      font-family:inherit;
+    }
+    .field input:focus, 
+    .field textarea:focus {
+      outline:none;
+      border-color: var(--primary);
+      box-shadow:0 0 0 3px rgba(127, 14, 31, 0.1);
+    }
+
+    /* Bottom nav */
+    .bottom-nav {
+      position:fixed;
+      left:0;
+      right:0;
+      bottom:0;
+      background:#fff;
+      display:none;
+      padding:10px 16px;
+      gap:8px;
+      border-top:1px solid rgba(0,0,0,0.08);
+      z-index:200;
+      justify-content:space-around;
+      box-shadow: 0 -4px 20px rgba(0,0,0,0.08);
+      font-size:0.7rem;
+    }
+    .bottom-nav a {
+      flex:1;
+      text-align:center;
+      display:flex;
+      flex-direction:column;
+      align-items:center;
+      gap:6px;
+      padding:8px 4px;
+      border-radius:8px;
+      color: var(--primary);
+      font-weight:600;
+      transition: all 0.2s;
+    }
+    .bottom-nav a:hover {
+      background: var(--primary-light);
+    }
+    .bottom-nav .icon { 
+      font-size:1.4rem;
+      transition: transform 0.2s;
+    }
+    .bottom-nav a:hover .icon {
+      transform: translateY(-3px);
+    }
+
+    /* Map */
+    .map-container {
+      width:100%;
+      aspect-ratio:16/9;
+      border-radius:12px;
+      overflow:hidden;
+      box-shadow:0 8px 20px rgba(0,0,0,0.1);
+      border:1px solid rgba(0,0,0,0.1);
+    }
+    .map-container iframe {
+      width:100%;
+      height:100%;
+      border:none;
+    }
+
+    /* Other */
+    .photo-credit { 
+      font-size:0.6rem; 
+      color:#666; 
+      margin-top:6px;
+    }
+    .divider { 
+      height:1px; 
+      background: #eee; 
+      margin:1.5rem 0;
+    }
+    .text-highlight {
+      color: var(--primary);
+      font-weight:600;
+    }
+    .hidden {
+      display:none;
+    }
+
+    /* Loading animation */
+    .loader {
+      display: inline-block;
+      width: 20px;
+      height: 20px;
+      border: 3px solid rgba(255,255,255,0.3);
+      border-radius: 50%;
+      border-top-color: white;
+      animation: spin 1s ease-in-out infinite;
+    }
+    @keyframes spin {
+      to { transform: rotate(360deg); }
+    }
+
+    /* Toast notification */
+    .toast {
+      position:fixed;
+      bottom:20px;
+      left:50%;
+      transform:translateX(-50%);
+      background:var(--primary);
+      color:white;
+      padding:12px 24px;
+      border-radius:8px;
+      box-shadow:0 4px 12px rgba(0,0,0,0.2);
+      z-index:1000;
+      display:flex;
+      align-items:center;
+      gap:10px;
+      opacity:0;
+      transition:opacity 0.3s;
+    }
+    .toast.show {
+      opacity:1;
+    }
+    .toast i {
+      font-size:1.2rem;
+    }
+
+    @media (max-width:1200px){ 
+      .navbar-container {
+        padding:0 16px;
+      }
+    }
+    @media (max-width:1000px){ 
+      .nav-links{display:none;} 
+      .navbar { height:72px; }
+      .logo { height:50px; }
+      .hero img {
+        max-height:280px;
+      }
+    }
+    @media (max-width:850px){ 
+      .bottom-nav{display:flex;} 
+      section[id] {
+        scroll-margin-top: 90px;
+      }
+      .hero {
+        padding:1.5rem;
+      }
+    }
+    @media (max-width:600px) {
+      h1 {
+        font-size:1.8rem;
+      }
+      h2 {
+        font-size:1.5rem;
+      }
+      .hero {
+        padding:1.2rem;
+        margin:1rem 0;
+      }
+      .hero img {
+        min-height:200px;
+      }
+      .container {
+        padding:1rem 16px 2rem;
+      }
+      .about, .contact, .location {
+        padding:1.5rem;
+      }
+      .cards {
+        grid-template-columns: repeat(auto-fit,minmax(240px,1fr));
+      }
+      section[id] {
+        scroll-margin-top: 80px;
+      }
+      .logo {
+        height: 45px;
+      }
+    }
+    @media (max-width:400px) {
+      .hero-content {
+        padding-top:0;
+      }
+      .cards {
+        grid-template-columns: 1fr;
+      }
+      .btn {
+        padding:8px 14px;
+        font-size:0.85rem;
+      }
+      .logo {
+        height: 40px;
+      }
+      .logo-text div:first-child {
+        font-size: 1rem;
+      }
+      .logo-text div:last-child {
+        font-size: 0.6rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAVBAR -->
+  <header class="navbar" aria-label="Main Navigation">
+    <div class="navbar-container">
+      <div class="logo-container">
+        <img src="fe.png" alt="Far East Vrysoules Logo" class="logo" onerror="this.onerror=null; this.src='data:image/svg+xml;utf8,<svg xmlns=&quot;http://www.w3.org/2000/svg&quot; viewBox=&quot;0 0 100 100&quot; fill=&quot;%237f0e1f&quot;><rect width=&quot;100&quot; height=&quot;100&quot; fill=&quot;white&quot;/><text x=&quot;50&quot; y=&quot;60&quot; font-family=&quot;Arial&quot; font-size=&quot;60&quot; text-anchor=&quot;middle&quot; fill=&quot;%237f0e1f&quot;>FE</text></svg>';" />
+        <div class="logo-text">
+          <div style="font-weight:700; font-size:1.1rem;" data-i18n="title">Far East Vrysoules</div>
+          <div style="font-size:0.7rem; opacity:.9;" data-i18n="location">Vrysoules, Cyprus</div>
+        </div>
+      </div>
+
+      <ul class="nav-links" aria-label="Desktop menu">
+        <li><a href="#home" class="nav-link" data-i18n="home">Home</a></li>
+        <li><a href="#about" class="nav-link" data-i18n="about">About</a></li>
+        <li><a href="#menu" class="nav-link" data-i18n="menu">Menu</a></li>
+        <li><a href="#contact" class="nav-link" data-i18n="contact">Contact</a></li>
+        <li><a href="#location" class="nav-link" data-i18n="location">Location</a></li>
+      </ul>
+
+      <div class="actions">
+        <a class="btn" href="tel:+35723962220" aria-label="Call us">
+          <i class="fas fa-phone-alt"></i> <span data-i18n="call_us_btn">Call Us</span>
+        </a>
+        <div class="lang-switch" aria-label="Language switcher">
+          <button id="btn-en" class="active" aria-pressed="true">EN</button>
+          <button id="btn-el" aria-pressed="false">ΕΛ</button>
+        </div>
+        <div class="socials" aria-label="Social media links">
+          <a href="https://www.instagram.com/fareastVrysoules" target="_blank" aria-label="Instagram" title="Instagram">
+            <i class="fab fa-instagram"></i>
+          </a>
+          <a href="https://www.facebook.com/fareastVrysoules" target="_blank" aria-label="Facebook" title="Facebook">
+            <i class="fab fa-facebook-f"></i>
+          </a>
+          <a href="https://www.tiktok.com/@fareastVrysoules" target="_blank" aria-label="TikTok" title="TikTok">
+            <i class="fab fa-tiktok"></i>
+          </a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- HOME / HERO -->
+  <main class="container">
+    <section id="home" class="hero" aria-label="Home hero">
+      <img src="https://images.unsplash.com/photo-1555992336-03a23c1e67d6?auto=format&fit=crop&w=800&q=80" alt="Restaurant interior" />
+      <div class="hero-content">
+        <div class="badge" data-i18n="welcome">Welcome</div>
+        <h1 data-i18n="headline">Taste the Far East in Vrysoules</h1>
+        <p>
+          <strong class="text-highlight">The Far East</strong> brings authentic UK-style Chinese takeaway and fresh sushi to your doorstep! 
+          Explore our extensive menu and join us on a culinary adventure. Order now for a taste of tradition!
+          <br><br>
+          We deliver locally and to Avgorou and Frenaros with a minimum order of €25.
+          <br><br>
+          <i class="fas fa-camera"></i> Tag us in your foodie moments! #FarEastVrysoules
+        </p>
+        <div style="display:flex; gap:12px; flex-wrap:wrap; margin-top:16px;">
+          <a class="btn" href="#menu" data-i18n="see_menu">
+            <i class="fas fa-utensils"></i> See Menu
+          </a>
+          <a class="btn secondary" href="#location" data-i18n="find_us">
+            <i class="fas fa-map-marker-alt"></i> Find Us
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ABOUT -->
+    <section id="about" class="about" aria-label="About">
+      <h2 data-i18n="about">About Us</h2>
+      <div>
+        <p>
+          At <strong class="text-highlight">The Far East</strong>, we bring the authentic flavors of UK-style Chinese cuisine and fresh sushi to the heart of Cyprus. 
+          Our chefs craft each dish with premium ingredients and traditional techniques, offering you 
+          a true taste of the Far East right here in Vrysoules.
+        </p>
+        <div class="divider"></div>
+        <p>
+          <strong>Opening Hours:</strong><br>
+          Tuesday - Sunday: 17:00 - 22:00<br>
+          <strong>Note:</strong> We are closed on Mondays.
+        </p>
+        <div class="divider"></div>
+        <p>
+          <strong>Delivery Areas:</strong><br>
+          Vrysoules, Avgorou, Frenaros, and surrounding areas<br>
+          Minimum delivery order: €25
+        </p>
+      </div>
+    </section>
+
+    <!-- MENU -->
+    <section id="menu" aria-label="Menu">
+      <div class="section-header">
+        <h2 data-i18n="our_menu">Our Menu</h2>
+        <div class="translate-note" data-i18n="note_translate">
+          <i class="fas fa-language"></i> Available in English & Greek
+        </div>
+      </div>
+      
+      <div class="menu-tabs">
+        <div class="menu-tab active" data-tab="chinese">Chinese Menu</div>
+        <div class="menu-tab sushi-tab" data-tab="sushi">Sushi Menu</div>
+      </div>
+      
+      <div class="menu-section" id="chinese-menu">
+        <div class="cards" id="menu-cards">
+          <!-- Chinese menu items will be injected here -->
+        </div>
+        <div class="show-more">
+          <button class="show-more-btn" id="show-more-chinese">
+            <span>Show More</span>
+            <i class="fas fa-chevron-down"></i>
+          </button>
+        </div>
+      </div>
+      
+      <div class="menu-section hidden" id="sushi-menu">
+        <div class="cards" id="sushi-cards">
+          <!-- Sushi menu items will be injected here -->
+        </div>
+        <div class="show-more">
+          <button class="show-more-btn" id="show-more-sushi">
+            <span>Show More</span>
+            <i class="fas fa-chevron-down"></i>
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact" class="contact" aria-label="Contact">
+      <h2 data-i18n="contact">Contact Us</h2>
+      <div style="margin-top:16px; display:grid; gap:24px; grid-template-columns: repeat(auto-fit,minmax(300px,1fr));">
+        <div>
+          <p><strong><i class="fas fa-phone-alt"></i> Phone:</strong> <a href="tel:+35723962220">+357 23 962220</a></p>
+          <p><strong><i class="fas fa-envelope"></i> Email:</strong> <a href="mailto:sthfareast@outlook.com">sthfareast@outlook.com</a></p>
+          <p><strong><i class="fas fa-map-marker-alt"></i> Address:</strong> Varosion 112, Deryneia, Cyprus</p>
+          <div class="divider"></div>
+          <p><strong><i class="fas fa-clock"></i> Opening Hours:</strong></p>
+          <p>Tuesday - Sunday: 17:00 - 22:00</p>
+          <div class="divider"></div>
+          <p><strong>Follow us:</strong></p>
+          <div style="display:flex; gap:12px; margin-top:12px;">
+            <a href="https://www.instagram.com/fareastVrysoules" target="_blank" aria-label="Instagram" title="Instagram" style="display:inline-flex;align-items:center;gap:6px; background:var(--primary-light); padding:8px 12px; border-radius:8px; color:var(--primary); font-weight:600;">
+              <i class="fab fa-instagram"></i>
+              <span>Instagram</span>
+            </a>
+            <a href="https://www.facebook.com/fareastVrysoules" target="_blank" aria-label="Facebook" title="Facebook" style="display:inline-flex;align-items:center;gap:6px; background:var(--primary-light); padding:8px 12px; border-radius:8px; color:var(--primary); font-weight:600;">
+              <i class="fab fa-facebook-f"></i>
+              <span>Facebook</span>
+            </a>
+            <a href="https://www.tiktok.com/@fareastVrysoules" target="_blank" aria-label="TikTok" title="TikTok" style="display:inline-flex;align-items:center;gap:6px; background:var(--primary-light); padding:8px 12px; border-radius:8px; color:var(--primary); font-weight:600;">
+              <i class="fab fa-tiktok"></i>
+              <span>TikTok</span>
+            </a>
+          </div>
+        </div>
+        <div>
+          <form id="contact-form" action="https://formspree.io/f/xrblyoaw" method="POST">
+            <div class="field">
+              <label for="name">Your Name</label>
+              <input id="name" type="text" name="name" placeholder="John Smith" required />
+            </div>
+            <div class="field">
+              <label for="email">Email Address</label>
+              <input id="email" type="email" name="email" placeholder="your@email.com" required />
+            </div>
+            <div class="field">
+              <label for="phone">Phone Number</label>
+              <input id="phone" type="tel" name="phone" placeholder="+357 99 123456" />
+            </div>
+            <div class="field">
+              <label for="message">Your Message</label>
+              <textarea id="message" name="message" rows="4" placeholder="Hi, I'd like to ask about..." required></textarea>
+            </div>
+            <input type="hidden" name="_language" value="en" />
+            <button type="submit" class="btn" style="width:100%; justify-content:center; padding:12px;">
+              <span id="submit-text">Send Message</span>
+              <span id="submit-loader" class="loader hidden"></span>
+            </button>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <!-- LOCATION -->
+    <section id="location" class="location" aria-label="Location">
+      <h2>Our Location</h2>
+      <div style="margin-top:16px; display:flex; flex-wrap:wrap; gap:24px;">
+        <div style="flex:1; min-width:280px;">
+          <p><strong>Far East Vrysoules</strong></p>
+          <p>Varosion 112, Deryneia, Cyprus</p>
+          <div class="divider"></div>
+          <p><strong>Opening Hours:</strong></p>
+          <p>Monday: Closed</p>
+          <p>Tuesday - Sunday: 17:00 - 22:00</p>
+          <div class="divider"></div>
+          <p><strong>Delivery Areas:</strong></p>
+          <p>Vrysoules, Avgorou, Frenaros</p>
+          <div style="margin-top:20px;">
+            <a target="_blank" href="https://www.google.com/maps/place/The+far+east/@35.0840518,33.8744048,18z/data=!4m6!3m5!1s0x14dfcb5d12b19a83:0xee265d3ad74623f0!8m2!3d35.0835448!4d33.8772265!16s%2Fg%2F11ldm2jl6l?entry=ttu&g_ep=EgoyMDI1MDczMC4wIKXMDSoASAFQAw%3D%3D" class="btn" style="display:inline-flex;align-items:center;gap:8px;">
+              <i class="fas fa-directions"></i> Get Directions
+            </a>
+          </div>
+        </div>
+        <div style="flex:2; min-width:320px;">
+          <div class="map-container">
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3276.475069235271!2d33.8744048!3d35.0840518!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14dfcb5d12b19a83%3A0xee265d3ad74623f0!2sThe%20far%20east!5e0!3m2!1sen!2s!4v1712345678901!5m2!1sen!2s" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- MOBILE BOTTOM NAV -->
+  <nav class="bottom-nav" aria-label="Mobile Navigation">
+    <a href="#home" aria-label="Home">
+      <div class="icon"><i class="fas fa-home"></i></div>
+      <div class="text" data-i18n="home">Home</div>
+    </a>
+    <a href="#menu" aria-label="Menu">
+      <div class="icon"><i class="fas fa-utensils"></i></div>
+      <div class="text" data-i18n="menu">Menu</div>
+    </a>
+    <a href="tel:+35723962220" aria-label="Call us">
+      <div class="icon"><i class="fas fa-phone-alt"></i></div>
+      <div class="text" data-i18n="call_us">Call</div>
+    </a>
+    <a href="#location" aria-label="Location">
+      <div class="icon"><i class="fas fa-map-marker-alt"></i></div>
+      <div class="text" data-i18n="location">Location</div>
+    </a>
+  </nav>
+
+  <!-- TOAST NOTIFICATION -->
+  <div class="toast" id="toast">
+    <i class="fas fa-check-circle"></i>
+    <span id="toast-message">Message sent successfully!</span>
+  </div>
+
+  <script>
+    // language dictionary
+    const translations = {
+      en: {
+        title: "Far East Vrysoules",
+        location: "Vrysoules, Cyprus",
+        home: "Home",
+        about: "About",
+        menu: "Menu",
+        contact: "Contact",
+        call_us_btn: "Call Us",
+        call_us: "Call",
+        our_menu: "Our Menu",
+        popular: "Popular Dishes",
+        welcome: "Welcome",
+        headline: "Taste the Far East in Vrysoules",
+        see_menu: "See Menu",
+        find_us: "Find Us",
+        note_translate: "Available in English & Greek",
+        dish1: "Special Combo Platter",
+        dish2: "Chef's Special Noodles",
+        dish3: "Dim Sum Selection",
+        dish4: "Aromatic Duck",
+        dish5: "Sweet & Sour Chicken",
+        dish6: "Beef with Black Bean Sauce",
+        dish7: "Crispy Shrimp",
+        dish8: "Vegetable Spring Rolls",
+        dish9: "Pork Chow Mein",
+        dish10: "Kung Pao Chicken",
+        dish11: "Szechuan Beef",
+        dish12: "Egg Fried Rice",
+        dish13: "Chicken Satay",
+        dish14: "Prawn Toast",
+        dish15: "Spare Ribs",
+        dish16: "Hot & Sour Soup",
+        dish17: "Wonton Soup",
+        dish18: "Singapore Noodles",
+        dish19: "Mongolian Beef",
+        dish20: "Lemon Chicken",
+        dish21: "Crispy Seaweed",
+        dish22: "Salt & Pepper Squid",
+        dish23: "Char Siu Pork",
+        dish24: "Vegetable Chop Suey",
+        dish25: "Chicken with Cashew Nuts",
+        dish26: "Special Fried Rice",
+        dish27: "Beef in Oyster Sauce",
+        dish28: "Honey Roast Duck",
+        dish29: "Crispy Chicken Wings",
+        dish30: "Vegetable Dumplings",
+        sushi1: "Salmon Nigiri",
+        sushi2: "Tuna Nigiri",
+        sushi3: "California Roll",
+        sushi4: "Dragon Roll",
+        sushi5: "Rainbow Roll",
+        sushi6: "Spicy Tuna Roll",
+        sushi7: "Avocado Maki",
+        sushi8: "Cucumber Maki",
+        sushi9: "Eel Nigiri",
+        sushi10: "Shrimp Tempura Roll",
+        sushi11: "Philadelphia Roll",
+        sushi12: "Spider Roll",
+        sushi13: "Salmon Skin Roll",
+        sushi14: "Vegetable Tempura Roll",
+        sushi15: "Tuna Avocado Roll",
+        sushi16: "Salmon Avocado Roll",
+        sushi17: "Crab Roll",
+        sushi18: "Yellowtail Nigiri",
+        sushi19: "Octopus Nigiri",
+        sushi20: "Scallop Nigiri",
+        form_success: "Message sent successfully!",
+        form_error: "Error sending message. Please try again."
+      },
+      el: {
+        title: "Far East Βρυσούλες",
+        location: "Βρυσούλες, Κύπρος",
+        home: "Αρχική",
+        about: "Σχετικά",
+        menu: "Μενού",
+        contact: "Επικοινωνία",
+        call_us_btn: "Καλέστε μας",
+        call_us: "Κλήση",
+        our_menu: "Το Μενού μας",
+        popular: "Δημοφιλή Πιάτα",
+        welcome: "Καλωσήρθατε",
+        headline: "Γευτείτε την Άπω Ανατολή στις Βρυσιούλες",
+        see_menu: "Δείτε Μενού",
+        find_us: "Βρείτε μας",
+        note_translate: "Διαθέσιμο στα Αγγλικά & Ελληνικά",
+        dish1: "Ειδικό Πιάτο Συνδυασμού",
+        dish2: "Σπέσιαλ Νουντλς του Σεφ",
+        dish3: "Επιλογή Dim Sum",
+        dish4: "Αρωματική Πάπια",
+        dish5: "Κοτόπουλο Γλυκόξινο",
+        dish6: "Μοσχάρι με Σάλτσα Μαύρων Φασολιών",
+        dish7: "Τραγανές Γαρίδες",
+        dish8: "Λαχανικά Σπρινγκ Ρολς",
+        dish9: "Χοιρινό Chow Mein",
+        dish10: "Kung Pao Κοτόπουλο",
+        dish11: "Μοσχάρι Szechuan",
+        dish12: "Ρύζι με Αυγό",
+        dish13: "Σατάy Κοτόπουλο",
+        dish14: "Τοστ Γαρίδας",
+        dish15: "Παϊδάκια",
+        dish16: "Πικάντικη Σούπα",
+        dish17: "Σούπα Wonton",
+        dish18: "Νουντλς Σιγκαπούρης",
+        dish19: "Μοσχάρι Μογγολίας",
+        dish20: "Κοτόπουλο με Λεμόνι",
+        dish21: "Τραγανά Φύκια",
+        dish22: "Καλαμάρι Αλάτι και Πιπέρι",
+        dish23: "Χοιρινό Char Siu",
+        dish24: "Λαχανικά Chop Suey",
+        dish25: "Κοτόπουλο με Κασσιού",
+        dish26: "Σπέσιαλ Τηγανητό Ρύζι",
+        dish27: "Μοσχάρι με Σάλτσα Στρειδιού",
+        dish28: "Πάπια με Μέλι",
+        dish29: "Τραγανές Φτερούγες Κοτόπουλου",
+        dish30: "Ντάμπλινγκ με Λαχανικά",
+        sushi1: "Σολομός Nigiri",
+        sushi2: "Τόνος Nigiri",
+        sushi3: "Ρόλο Καλιφόρνια",
+        sushi4: "Ρόλο Δράκου",
+        sushi5: "Ρόλο Ουράνιο Τόξο",
+        sushi6: "Πικάντικο Ρόλο Τόνου",
+        sushi7: "Αβοκάντο Maki",
+        sushi8: "Αγγούρι Maki",
+        sushi9: "Χέλι Nigiri",
+        sushi10: "Ρόλο Γαρίδας Tempura",
+        sushi11: "Ρόλο Φιλαδέλφεια",
+        sushi12: "Ρόλο Αράχνης",
+        sushi13: "Ρόλο Δέρματος Σολομού",
+        sushi14: "Ρόλο Λαχανικών Tempura",
+        sushi15: "Ρόλο Τόνου με Αβοκάντο",
+        sushi16: "Ρόλο Σολομού με Αβοκάντο",
+        sushi17: "Ρόλο Καβουριού",
+        sushi18: "Yellowtail Nigiri",
+        sushi19: "Χταπόδι Nigiri",
+        sushi20: "Χτένι Nigiri",
+        form_success: "Το μήνυμα σας εστάλη με επιτυχία!",
+        form_error: "Σφάλμα κατά την αποστολή. Παρακαλώ δοκιμάστε ξανά."
+      }
+    };
+
+    function applyLang(lang) {
+      document.documentElement.setAttribute('data-lang', lang);
+      document.querySelectorAll('[data-i18n]').forEach(el => {
+        const key = el.getAttribute('data-i18n');
+        if (translations[lang] && translations[lang][key]) {
+          el.textContent = translations[lang][key];
+        }
+      });
+      document.getElementById('btn-en').classList.toggle('active', lang === 'en');
+      document.getElementById('btn-el').classList.toggle('active', lang === 'el');
+      document.getElementById('btn-en').setAttribute('aria-pressed', lang === 'en');
+      document.getElementById('btn-el').setAttribute('aria-pressed', lang === 'el');
+      renderMenu();
+    }
+
+    document.getElementById('btn-en').addEventListener('click', () => applyLang('en'));
+    document.getElementById('btn-el').addEventListener('click', () => applyLang('el'));
+    
+    // Apply language on page load
+    document.addEventListener('DOMContentLoaded', () => {
+      applyLang('en');
+    });
+
+    // menu items - expanded with 30 Chinese and 20 sushi items
+    const menuData = {
+      chinese: [
+        {
+          titleKey: "dish1",
+          desc: "A generous platter featuring our best-selling items including spring rolls, crispy duck, and sweet & sour chicken.",
+          price: "€18.50",
+          img: "https://images.unsplash.com/photo-1562158070-0b9c3b830d66?auto=format&fit=crop&w=600&q=80"
+        },
+        {
+          titleKey: "dish2",
+          desc: "Stir-fried noodles with fresh vegetables, succulent prawns, and our signature sauce.",
+          price: "€12.00",
+          img: "https://images.unsplash.com/photo-1553621042-f6e147245754?auto=format&fit=crop&w=600&q=80"
+        },
+        {
+          titleKey: "dish3",
+          desc: "Assortment of 8 steamed dumplings with pork, shrimp, and vegetable fillings.",
+          price: "€9.50",
+          img: "https://images.unsplash.com/photo-1551218808-94e220e084d2?auto=format&fit=crop&w=600&q=80"
+        },
+        {
+          titleKey: "dish4",
+          desc: "Crispy aromatic duck served with pancakes, cucumber, spring onion and hoisin sauce.",
+          price: "€15.00",
+          img: "https://images.unsplash.com/photo-1585032226651-759b368d7246?auto=format&fit=crop&w=600&q=80"
+        },
+        {
+          titleKey: "dish5",
+          desc: "Crispy chicken pieces in our tangy sweet and sour sauce with peppers and pineapple.",
+          price: "€11.50",
+          img: "https://images.unsplash.com/photo-1601050690597-df0568f70950?auto=format&fit=crop&w=600&q=80"
+        },
+        {
+          titleKey: "dish6",
+          desc: "Tender beef strips stir-fried with black bean sauce, peppers, and onions.",
+          price: "€13.50",
+          img: "https://images.unsplash.com/photo-1603894584373-5ac82b2ae398?auto=format&fit=crop&w=600&q=80"
+        },
+        {
+          titleKey: "dish7",
+          desc: "Lightly battered shrimp fried to perfection, served with sweet chili dip.",
+          price: "€14.00",
+          img: "https://images.unsplash.com/photo-1631815588090-d4bfec5b1ccb?auto=format&fit=crop&w=600&q=80"
+        },
+        {
+          titleKey: "dish8",
+          desc: "Crispy vegetarian spring rolls with cabbage, carrots, and mushrooms.",
+          price: "€6.50",
+          img: "https://images.unsplash.com/photo-1585032226651-759b368d7246?auto=format&fit=crop&w=600&q=80"
+        },
+        {
+          titleKey: "dish9",
+          desc: "Stir-fried noodles with pork, beansprouts, onions, and our special sauce.",
+          price: "€10.50",
+          img: "https://images.unsplash.com/photo-1555126634-323283e090fa?auto=format&fit=crop&w=600&q=80"
+        },
+        {
+          titleKey: "dish10",
+          desc: "Spicy chicken with peanuts, vegetables, and chili in a savory sauce.",
+          price: "€12.00",
+          img: "https://images.unsplash.com/photo-1585032226651-759b368d7246?auto=format&fit=crop&w=600&q=80"
+        },
+        {
+          titleKey: "dish11",
+          desc: "Tender beef strips in a spicy Szechuan sauce with vegetables.",
+          price: "€13.50",
+          img: "https://images.unsplash.com/photo-1603894584373-5ac82b2ae398?auto=format&fit=crop&w=600&q=80"
+        },
+        {
+          titleKey: "dish12",
+          desc: "Classic egg fried rice with peas, carrots, and spring onions.",
+          price: "€7.50",
+          img: "https://images.unsplash.com/photo-1603133872878-684f208fb84b?auto=format&fit=crop&w=600&q=80"
+        },
+        {
+          titleKey: "dish13",
+          desc: "Grilled chicken skewers with peanut sauce, served with cucumber salad.",
+          price: "€9.50",
+          img: "https://images.unsplash.com/photo-1585032226651-759b368d7246?auto=format&fit=crop&w=600&q=80"
+        },
+        {
+          titleKey: "dish14",
+          desc: "Crispy toast topped with prawn paste, sesame seeds, and spring onions.",
+          price: "€8.00",
+          img: "https://images.unsplash.com/photo-1631815588090-d4bfec5b1ccb?auto=format&fit=crop&w=600&q=80"
+        },
+        {
+          titleKey: "dish15",
+          desc: "Succulent pork ribs marinated in our special sauce, slow-cooked to perfection.",
+          price: "€11.00",
+          img: "https://images.unsplash.com/photo-1611273426858-450d8e3c9fce?auto=format&fit=crop&w=600&q=80"
+        },
+        {
+          titleKey: "dish16",
+          desc: "Spicy and sour soup with mushrooms, tofu, bamboo shoots, and eggs.",
+          price: "€6.50",
+          img: "https://images.unsplash.com/photo-1547592180-85f173990554?auto=format&fit=crop&w=600&q=80"
+        },
+        {
+          titleKey: "dish17",
+          desc: "Clear broth with pork and shrimp wontons, garnished with spring onions.",
+          price: "€6.00",
+          img: "https://images.unsplash.com/photo-1547592180-85f173990554?auto=format&fit=crop&w=600&q=80"
+        },
+        {
+          titleKey: "dish18",
+          desc: "Curry-flavored rice noodles with shrimp, pork, and vegetables.",
+          price: "€12.50",
+          img: "https://images.unsplash.com/photo-1555126634-323283e090fa?auto=format&fit=crop&w=600&q=80"
+        },
+        {
+          titleKey: "dish19",
+          desc: "Tender beef strips stir-fried with scallions in a rich savory sauce.",
+          price: "€13.50",
+          img: "https://images.unsplash.com/photo-1603894584373-5ac82b2ae398?auto=format&fit=crop&w=600&q=80"
+        },
+        {
+          titleKey: "dish20",
+          desc: "Crispy chicken with a tangy lemon sauce, garnished with lemon slices.",
+          price: "€12.00",
+          img: "https://images.unsplash.com/photo-1601050690597-df0568f70950?auto=format&fit=crop&w=600&q=80"
+        },
+        {
+          titleKey: "dish21",
+          desc: "Crispy fried seaweed with sesame seeds and a touch of salt.",
+          price: "€5.50",
+          img: "https://images.unsplash.com/photo-1519708227418-c8fd9a32b7a2?auto=format&fit=crop&w=600&q=80"
+        },
+        {
+          titleKey: "dish22",
+          desc: "Crispy squid lightly seasoned with salt, pepper, and chili.",
+          price: "€14.50",
+          img: "https://images.unsplash.com/photo-1529563021893-cc83c992d00d?auto=format&fit=crop&w=600&q=80"
+        },
+        {
+          titleKey: "dish23",
+          desc: "Barbecued pork with honey glaze, served with steamed buns.",
+          price: "€12.50",
+          img: "https://images.unsplash.com/photo-1611273426858-450d8e3c9fce?auto=format&fit=crop&w=600&q=80"
+        },
+        {
+          titleKey: "dish24",
+          desc: "Stir-fried mixed vegetables in a light savory sauce.",
+          price: "€9.50",
+          img: "https://images.unsplash.com/photo-1546069901-ba9599a7e63c?auto=format&fit=crop&w=600&q=80"
+        },
+        {
+          titleKey: "dish25",
+          desc: "Chicken stir-fried with cashew nuts, peppers, and onions.",
+          price: "€12.00",
+          img: "https://images.unsplash.com/photo-1601050690597-df0568f70950?auto=format&fit=crop&w=600&q=80"
+        },
+        {
+          titleKey: "dish26",
+          desc: "Fried rice with egg, shrimp, pork, chicken, and vegetables.",
+          price: "€10.50",
+          img: "https://images.unsplash.com/photo-1603133872878-684f208fb84b?auto=format&fit=crop&w=600&q=80"
+        },
+        {
+          titleKey: "dish27",
+          desc: "Tender beef strips in a rich oyster sauce with mushrooms and vegetables.",
+          price: "€13.50",
+          img: "https://images.unsplash.com/photo-1603894584373-5ac82b2ae398?auto=format&fit=crop&w=600&q=80"
+        },
+        {
+          titleKey: "dish28",
+          desc: "Roast duck with honey glaze, served with steamed pancakes.",
+          price: "€16.00",
+          img: "https://images.unsplash.com/photo-1585032226651-759b368d7246?auto=format&fit=crop&w=600&q=80"
+        },
+        {
+          titleKey: "dish29",
+          desc: "Crispy chicken wings seasoned with our special spices.",
+          price: "€9.50",
+          img: "https://images.unsplash.com/photo-1626082927389-6cd097cdc6ec?auto=format&fit=crop&w=600&q=80"
+        },
+        {
+          titleKey: "dish30",
+          desc: "Steamed dumplings filled with mixed vegetables, served with soy dip.",
+          price: "€8.50",
+          img: "https://images.unsplash.com/photo-1551218808-94e220e084d2?auto=format&fit=crop&w=600&q=80"
+        }
+      ],
+      sushi: [
+        {
+          titleKey: "sushi1",
+          desc: "Fresh salmon slices over pressed rice, a classic favorite.",
+          price: "€4.50",
+          img: "https://images.unsplash.com/photo-1611143669185-af224c5e3252?auto=format&fit=crop&w=600&q=80"
+        },
+        {
+          titleKey: "sushi2",
+          desc: "Premium tuna slices over pressed rice, rich in flavor.",
+          price: "€5.00",
+          img: "https://images.unsplash.com/photo-1579584425555-c3ce17fd4351?auto=format&fit=crop&w=600&q=80"
+        },
+        {
+          titleKey: "sushi3",
+          desc: "Crab, avocado, and cucumber rolled in seaweed and rice.",
+          price: "€8.50",
+          img: "https://images.unsplash.com/photo-1553621042-f6e147245754?auto=format&fit=crop&w=600&q=80"
+        },
+        {
+          titleKey: "sushi4",
+          desc: "Eel and cucumber inside, topped with avocado and eel sauce.",
+          price: "€12.00",
+          img: "https://images.unsplash.com/photo-1617196035154-1e1e6b01b5fa?auto=format&fit=crop&w=600&q=80"
+        },
+        {
+          titleKey: "sushi5",
+          desc: "California roll topped with assorted fish slices.",
+          price: "€14.00",
+          img: "https://images.unsplash.com/photo-1611143669185-af224c5e3252?auto=format&fit=crop&w=600&q=80"
+        },
+        {
+          titleKey: "sushi6",
+          desc: "Spicy tuna with cucumber inside, topped with spicy mayo.",
+          price: "€10.50",
+          img: "https://images.unsplash.com/photo-1579584425555-c3ce17fd4351?auto=format&fit=crop&w=600&q=80"
+        },
+        {
+          titleKey: "sushi7",
+          desc: "Avocado rolled in seaweed and rice, a vegetarian favorite.",
+          price: "€6.50",
+          img: "https://images.unsplash.com/photo-1553621042-f6e147245754?auto=format&fit=crop&w=600&q=80"
+        },
+        {
+          titleKey: "sushi8",
+          desc: "Fresh cucumber rolled in seaweed and rice, light and refreshing.",
+          price: "€5.50",
+          img: "https://images.unsplash.com/photo-1546069901-ba9599a7e63c?auto=format&fit=crop&w=600&q=80"
+        },
+        {
+          titleKey: "sushi9",
+          desc: "Grilled eel over pressed rice with eel sauce.",
+          price: "€6.00",
+          img: "https://images.unsplash.com/photo-1617196035154-1e1e6b01b5fa?auto=format&fit=crop&w=600&q=80"
+        },
+        {
+          titleKey: "sushi10",
+          desc: "Crispy shrimp tempura with avocado and cucumber.",
+          price: "€11.00",
+          img: "https://images.unsplash.com/photo-1631815588090-d4bfec5b1ccb?auto=format&fit=crop&w=600&q=80"
+        },
+        {
+          titleKey: "sushi11",
+          desc: "Smoked salmon, cream cheese, and cucumber roll.",
+          price: "€10.00",
+          img: "https://images.unsplash.com/photo-1611143669185-af224c5e3252?auto=format&fit=crop&w=600&q=80"
+        },
+        {
+          titleKey: "sushi12",
+          desc: "Soft-shell crab tempura with avocado and cucumber.",
+          price: "€13.50",
+          img: "https://images.unsplash.com/photo-1631815588090-d4bfec5b1ccb?auto=format&fit=crop&w=600&q=80"
+        },
+        {
+          titleKey: "sushi13",
+          desc: "Crispy salmon skin with cucumber and sesame seeds.",
+          price: "€9.50",
+          img: "https://images.unsplash.com/photo-1611143669185-af224c5e3252?auto=format&fit=crop&w=600&q=80"
+        },
+        {
+          titleKey: "sushi14",
+          desc: "Vegetable tempura with avocado and cucumber.",
+          price: "€10.00",
+          img: "https://images.unsplash.com/photo-1546069901-ba9599a7e63c?auto=format&fit=crop&w=600&q=80"
+        },
+        {
+          titleKey: "sushi15",
+          desc: "Fresh tuna and avocado roll, simple and delicious.",
+          price: "€11.50",
+          img: "https://images.unsplash.com/photo-1579584425555-c3ce17fd4351?auto=format&fit=crop&w=600&q=80"
+        },
+        {
+          titleKey: "sushi16",
+          desc: "Fresh salmon and avocado roll, a perfect combination.",
+          price: "€11.50",
+          img: "https://images.unsplash.com/photo-1611143669185-af224c5e3252?auto=format&fit=crop&w=600&q=80"
+        },
+        {
+          titleKey: "sushi17",
+          desc: "Fresh crab meat with avocado and cucumber.",
+          price: "€12.50",
+          img: "https://images.unsplash.com/photo-1631815588090-d4bfec5b1ccb?auto=format&fit=crop&w=600&q=80"
+        },
+        {
+          titleKey: "sushi18",
+          desc: "Premium yellowtail over pressed rice, delicate flavor.",
+          price: "€5.50",
+          img: "https://images.unsplash.com/photo-1579584425555-c3ce17fd4351?auto=format&fit=crop&w=600&q=80"
+        },
+        {
+          titleKey: "sushi19",
+          desc: "Tender octopus slices over pressed rice.",
+          price: "€6.00",
+          img: "https://images.unsplash.com/photo-1617196035154-1e1e6b01b5fa?auto=format&fit=crop&w=600&q=80"
+        },
+        {
+          titleKey: "sushi20",
+          desc: "Fresh scallop slices over pressed rice, sweet and delicate.",
+          price: "€7.00",
+          img: "https://images.unsplash.com/photo-1611143669185-af224c5e3252?auto=format&fit=crop&w=600&q=80"
+        }
+      ]
+    };
+
+    // Menu rendering with show more functionality
+    function renderMenu() {
+      const lang = document.documentElement.getAttribute('data-lang') || 'en';
+      const chineseContainer = document.getElementById('menu-cards');
+      const sushiContainer = document.getElementById('sushi-cards');
+      
+      // Clear containers
+      chineseContainer.innerHTML = '';
+      sushiContainer.innerHTML = '';
+      
+      // Render initial Chinese items (first 8)
+      menuData.chinese.slice(0, 8).forEach(item => {
+        const title = translations[lang][item.titleKey] || item.titleKey;
+        const card = document.createElement('div');
+        card.className = 'card';
+        card.innerHTML = `
+          <img src="${item.img}" alt="${title}" loading="lazy" />
+          <div class="card-title">${title}</div>
+          <div class="card-desc">${item.desc}</div>
+          <div class="price">${item.price}</div>
+        `;
+        chineseContainer.appendChild(card);
+      });
+      
+      // Render initial Sushi items (first 8)
+      menuData.sushi.slice(0, 8).forEach(item => {
+        const title = translations[lang][item.titleKey] || item.titleKey;
+        const card = document.createElement('div');
+        card.className = 'card sushi';
+        card.innerHTML = `
+          <img src="${item.img}" alt="${title}" loading="lazy" />
+          <div class="card-title">${title}</div>
+          <div class="card-desc">${item.desc}</div>
+          <div class="price">${item.price}</div>
+        `;
+        sushiContainer.appendChild(card);
+      });
+    }
+
+    // Show more functionality
+    function setupShowMore() {
+      const chineseBtn = document.getElementById('show-more-chinese');
+      const sushiBtn = document.getElementById('show-more-sushi');
+      const chineseContainer = document.getElementById('menu-cards');
+      const sushiContainer = document.getElementById('sushi-cards');
+      
+      let chineseShowingAll = false;
+      let sushiShowingAll = false;
+      
+      chineseBtn.addEventListener('click', () => {
+        const lang = document.documentElement.getAttribute('data-lang') || 'en';
+        chineseShowingAll = !chineseShowingAll;
+        
+        if (chineseShowingAll) {
+          // Show all Chinese items
+          chineseContainer.innerHTML = '';
+          menuData.chinese.forEach(item => {
+            const title = translations[lang][item.titleKey] || item.titleKey;
+            const card = document.createElement('div');
+            card.className = 'card';
+            card.innerHTML = `
+              <img src="${item.img}" alt="${title}" loading="lazy" />
+              <div class="card-title">${title}</div>
+              <div class="card-desc">${item.desc}</div>
+              <div class="price">${item.price}</div>
+            `;
+            chineseContainer.appendChild(card);
+          });
+          chineseBtn.innerHTML = '<span>Show Less</span><i class="fas fa-chevron-up"></i>';
+        } else {
+          // Show first 8 Chinese items
+          renderMenu();
+          chineseBtn.innerHTML = '<span>Show More</span><i class="fas fa-chevron-down"></i>';
+        }
+      });
+      
+      sushiBtn.addEventListener('click', () => {
+        const lang = document.documentElement.getAttribute('data-lang') || 'en';
+        sushiShowingAll = !sushiShowingAll;
+        
+        if (sushiShowingAll) {
+          // Show all Sushi items
+          sushiContainer.innerHTML = '';
+          menuData.sushi.forEach(item => {
+            const title = translations[lang][item.titleKey] || item.titleKey;
+            const card = document.createElement('div');
+            card.className = 'card sushi';
+            card.innerHTML = `
+              <img src="${item.img}" alt="${title}" loading="lazy" />
+              <div class="card-title">${title}</div>
+              <div class="card-desc">${item.desc}</div>
+              <div class="price">${item.price}</div>
+            `;
+            sushiContainer.appendChild(card);
+          });
+          sushiBtn.innerHTML = '<span>Show Less</span><i class="fas fa-chevron-up"></i>';
+        } else {
+          // Show first 8 Sushi items
+          renderMenu();
+          sushiBtn.innerHTML = '<span>Show More</span><i class="fas fa-chevron-down"></i>';
+        }
+      });
+    }
+
+    // Menu tab switching
+    function setupMenuTabs() {
+      const tabs = document.querySelectorAll('.menu-tab');
+      const menuSections = document.querySelectorAll('.menu-section');
+      
+      tabs.forEach(tab => {
+        tab.addEventListener('click', () => {
+          // Update active tab
+          tabs.forEach(t => t.classList.remove('active'));
+          tab.classList.add('active');
+          
+          // Show corresponding menu section
+          const tabName = tab.getAttribute('data-tab');
+          menuSections.forEach(section => {
+            if (section.id === `${tabName}-menu`) {
+              section.classList.remove('hidden');
+            } else {
+              section.classList.add('hidden');
+            }
+          });
+        });
+      });
+    }
+
+    // Initialize all functionality
+    function initialize() {
+      applyLang('en');
+      renderMenu();
+      setupShowMore();
+      setupMenuTabs();
+      
+      // smooth scroll to sections accounting for fixed header
+      document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function(e) {
+          e.preventDefault();
+          const targetId = this.getAttribute('href');
+          const targetElement = document.querySelector(targetId);
+          if (targetElement) {
+            window.scrollTo({
+              top: targetElement.offsetTop - 90,
+              behavior: 'smooth'
+            });
+          }
+        });
+      });
+
+      // highlight active nav link on scroll
+      const sections = document.querySelectorAll('section[id]');
+      const navLinks = document.querySelectorAll('.nav-link');
+      function syncActive() {
+        let fromTop = window.scrollY + 100;
+        sections.forEach(sec => {
+          if (sec.offsetTop <= fromTop && (sec.offsetTop + sec.offsetHeight) > fromTop) {
+            navLinks.forEach(a => a.classList.toggle('active', a.getAttribute('href') === '#' + sec.id));
+          }
+        });
+      }
+      window.addEventListener('scroll', syncActive);
+      syncActive();
+
+      // form submission with loading state
+      document.getElementById('contact-form').addEventListener('submit', function(e) {
+        e.preventDefault();
+        
+        const form = this;
+        const submitText = document.getElementById('submit-text');
+        const submitLoader = document.getElementById('submit-loader');
+        const toast = document.getElementById('toast');
+        const toastMessage = document.getElementById('toast-message');
+        const lang = document.documentElement.getAttribute('data-lang') || 'en';
+        
+        // Update hidden language field
+        form.querySelector('input[name="_language"]').value = lang;
+        
+        // Show loading state
+        submitText.classList.add('hidden');
+        submitLoader.classList.remove('hidden');
+        
+        // Prepare form data
+        const formData = new FormData(form);
+        
+        // Send to Formspree
+        fetch(form.action, {
+          method: 'POST',
+          body: formData,
+          headers: {
+            'Accept': 'application/json'
+          }
+        })
+        .then(response => {
+          if (response.ok) {
+            // Show success toast
+            toastMessage.textContent = translations[lang]['form_success'];
+            toast.classList.add('show');
+            
+            // Hide toast after 3 seconds
+            setTimeout(() => {
+              toast.classList.remove('show');
+            }, 3000);
+            
+            // Reset form
+            form.reset();
+          } else {
+            throw new Error('Form submission failed');
+          }
+        })
+        .catch(error => {
+          // Show error toast
+          toastMessage.textContent = translations[lang]['form_error'];
+          toast.classList.add('show');
+          
+          // Hide toast after 3 seconds
+          setTimeout(() => {
+            toast.classList.remove('show');
+          }, 3000);
+        })
+        .finally(() => {
+          // Hide loading state
+          submitText.classList.remove('hidden');
+          submitLoader.classList.add('hidden');
+        });
+      });
+    }
+
+    // Wait for DOM to be fully loaded before initializing
+    document.addEventListener('DOMContentLoaded', initialize);
+  </script>
+</body>
+</html>
